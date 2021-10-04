@@ -1,9 +1,12 @@
 import './App.scss'
+import Header from "./components/Header/Header";
 
-function App() {
+const App = () => {
     return (
         <div className="app_wrapper">
-            <h1>Hello World</h1>
+           <div className="container-fluid">
+               <Header />
+           </div>
         </div>
     );
 }

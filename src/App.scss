@@ -1,0 +1,13 @@
+@import 'vars';
+
+body {
+  background: $main_color;
+  padding: 40px 0;
+  max-height: 100vh;
+  .app_wrapper {
+    width: 96%;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 10px;
+  }
+}
