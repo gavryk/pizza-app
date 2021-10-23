@@ -4,6 +4,12 @@
     .logo {
       display: flex;
       align-items: center;
+      color: #000;
+      text-decoration: none;
+      transition: all .4s ease-in-out;
+      &:hover {
+        opacity: .8;
+      }
       img {
         flex-basis: 40px;
         max-width: 40px;
@@ -16,7 +22,17 @@
       }
     }
     .headerButton {
-      background: red;
+      button {
+        background: #FE5F1E;
+        border-radius: 30px;
+        border: none;
+        outline: none;
+        padding: 15px;
+        min-width: 150px;
+        span {
+          color: #fff;
+        }
+      }
     }
   }
 }

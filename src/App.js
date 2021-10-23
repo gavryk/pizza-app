@@ -6,6 +6,7 @@ const App = () => {
         <div className="app_wrapper">
            <div className="container-fluid">
                <Header />
+
            </div>
         </div>
     );
