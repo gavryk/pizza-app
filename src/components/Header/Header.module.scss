@@ -1,8 +1,22 @@
 .header {
   .headerWrapper {
-    padding: 15px;
+    padding: 20px 15px;
     .logo {
-
+      display: flex;
+      align-items: center;
+      img {
+        flex-basis: 40px;
+        max-width: 40px;
+        margin-right: 10px;
+      }
+      h4 {
+        flex: 1;
+        font-weight: 700;
+        margin-bottom: 0;
+      }
+    }
+    .headerButton {
+      background: red;
     }
   }
 }
