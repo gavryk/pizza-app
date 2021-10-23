@@ -2,8 +2,13 @@ import React from "react";
 import style from './Header.module.scss';
 import logo from '../../assets/img/pizza-logo.png';
 import {NavLink} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faShoppingCart} from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
+    let totalCount = 2;
+    let totalSum = 250;
+
     return (
         <div className={style.header}>
             <div className={`${style.headerWrapper} d-flex justify-content-between align-items-center`}>
@@ -13,10 +18,10 @@ const Header = () => {
                 </NavLink>
 
                 <div className={`${style.headerButton} col-2 d-flex justify-content-end`}>
-                    <button type='button' className='btn'>
-                        <span>2000</span>
-                        <span>Cart</span>
-                    </button>
+                    <NavLink to='/cart' type='button' className={ style.btn }>
+                        <span className={ style.sum }>{ totalSum } &#8372;</span>
+                        <span className={ style.cart }><FontAwesomeIcon icon={faShoppingCart} />{ totalCount }</span>
+                    </NavLink>
                 </div>
             </div>
         </div>
