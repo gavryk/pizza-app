@@ -6,6 +6,8 @@ import { Route, Switch } from "react-router-dom";
 import Cart from "./Pages/Cart/Cart";
 
 const App = () => {
+    let catList = ['All', 'Meat', 'Vegetarian', 'Grill', 'Sharp', 'Closed'];
+
     return (
         <div className="app_wrapper">
            <div className="container-fluid">
@@ -14,7 +16,7 @@ const App = () => {
                <div className="content">
                     <Switch>
                         <Route exact path='/'>
-                            <Home />
+                            <Home categories={ catList } />
                         </Route>
                         <Route exact path='/cart'>
                             <Cart />

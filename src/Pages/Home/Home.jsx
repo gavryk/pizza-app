@@ -3,17 +3,19 @@ import {faCaretUp} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import style from './Home.module.scss'
 
-const Home = () => {
+const Home = ({ categories }) => {
+
     return (
-        <div className={ style.content__top }>
-            <div className={ style.categories }>
-                <ul>
-                    <li className="active">All</li>
-                    <li>Meat</li>
-                    <li>Vegetarian</li>
-                    <li>Grill</li>
-                    <li>Sharp</li>
-                    <li>Closed</li>
+        <div className={`${ style.content__top } d-flex justify-content-between`}>
+            <div className={`${ style.categories } col-8`}>
+                <ul className='d-flex justify-content-start align-items-center'>
+                    {
+                        categories.map(cat => {
+                            return (
+                                <li>{ cat }</li>
+                            )
+                        })
+                    }
                 </ul>
             </div>
             <div className="sort">
