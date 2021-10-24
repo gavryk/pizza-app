@@ -5,10 +5,11 @@ import style from './Home.module.scss';
 import {Categories} from "../../components";
 
 const Home = ({ categories }) => {
+
     return (
         <div className={`${ style.content__top } d-flex justify-content-between`}>
             <div className={`${ style.categories } col-8`}>
-                <Categories items={ categories }/>
+                <Categories catClickItem={ (name) => console.log(name) } items={ categories }/>
             </div>
             <div className="sort">
                 <div className="sort__label">

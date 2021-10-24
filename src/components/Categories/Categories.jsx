@@ -1,19 +1,30 @@
-import React from "react";
-import {Button} from "../index";
+import React, {useState} from "react";
+import style from './Categories.module.scss'
 
 
-const Categories = ({ items }) => {
+const Categories = ({ items, catClickItem }) => {
+    const [activeItem, setActiveItem] = useState(null)
+
+    const onSelectCat = (index) => {
+        setActiveItem(index);
+    }
+
     return(
-        <div className='d-flex justify-content-start align-items-center'>
-            <Button active>All</Button>
+        <ul className='d-flex justify-content-start align-items-center'>
+            <li className={`${ style.btn } ${ activeItem === null && style.active }`} onClick={ () => onSelectCat(null) }>All</li>
             {
-                items.map(cat => {
+                items.map((cat, index) => {
                     return (
-                        <Button>{ cat }</Button>
+                        <li className={`${style.btn} ${ activeItem === index && style.active }`}
+                            onClick={ () => onSelectCat(index) }
+                            key={`${ cat }_${ index }`}
+                        >
+                            { cat }
+                        </li>
                     )
                 })
             }
-        </div>
+        </ul>
     )
 }
 
