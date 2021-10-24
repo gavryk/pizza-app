@@ -2,7 +2,8 @@ import './App.scss'
 import Header from "./components/Header/Header";
 import React from "react";
 import Home from "./Pages/Home/Home";
-import {Route, Switch} from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
+import Cart from "./Pages/Cart/Cart";
 
 const App = () => {
     return (
@@ -14,6 +15,9 @@ const App = () => {
                     <Switch>
                         <Route exact path='/'>
                             <Home />
+                        </Route>
+                        <Route exact path='/cart'>
+                            <Cart />
                         </Route>
                     </Switch>
                </div>

@@ -1,11 +1,12 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCaretUp} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
+import style from './Home.module.scss'
 
 const Home = () => {
     return (
-        <div className="content__top">
-            <div className="categories">
+        <div className={ style.content__top }>
+            <div className={ style.categories }>
                 <ul>
                     <li className="active">All</li>
                     <li>Meat</li>
