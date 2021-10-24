@@ -11,9 +11,13 @@ const Categories = ({ items, catClickItem }) => {
 
     return(
         <ul className='d-flex justify-content-start align-items-center'>
-            <li className={`${ style.btn } ${ activeItem === null && style.active }`} onClick={ () => onSelectCat(null) }>All</li>
+            <li className={`${ style.btn } ${ activeItem === null && style.active }`}
+                onClick={ () => onSelectCat(null) }
+            >
+                All
+            </li>
             {
-                items.map((cat, index) => {
+                items && items.map((cat, index) => {
                     return (
                         <li className={`${style.btn} ${ activeItem === index && style.active }`}
                             onClick={ () => onSelectCat(index) }
