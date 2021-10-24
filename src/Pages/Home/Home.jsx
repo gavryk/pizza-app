@@ -1,22 +1,14 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCaretUp} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-import style from './Home.module.scss'
+import style from './Home.module.scss';
+import {Categories} from "../../components";
 
 const Home = ({ categories }) => {
-
     return (
         <div className={`${ style.content__top } d-flex justify-content-between`}>
             <div className={`${ style.categories } col-8`}>
-                <ul className='d-flex justify-content-start align-items-center'>
-                    {
-                        categories.map(cat => {
-                            return (
-                                <li>{ cat }</li>
-                            )
-                        })
-                    }
-                </ul>
+                <Categories items={ categories }/>
             </div>
             <div className="sort">
                 <div className="sort__label">

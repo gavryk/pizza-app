@@ -18,7 +18,7 @@ const Header = () => {
                 </NavLink>
 
                 <div className={`${style.headerButton} col-2 d-flex justify-content-end`}>
-                    <NavLink to='/cart' type='button' className={ style.btn }>
+                    <NavLink to='/cart' type='button' className={ style.btnCart }>
                         <span className={ style.sum }>{ totalSum } &#8372;</span>
                         <span className={ style.cart }><FontAwesomeIcon icon={faShoppingCart} />{ totalCount }</span>
                     </NavLink>

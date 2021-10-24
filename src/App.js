@@ -1,18 +1,17 @@
 import './App.scss'
-import Header from "./components/Header/Header";
 import React from "react";
 import Home from "./Pages/Home/Home";
 import { Route, Switch } from "react-router-dom";
 import Cart from "./Pages/Cart/Cart";
+import {Header} from "./components";
 
 const App = () => {
-    let catList = ['All', 'Meat', 'Vegetarian', 'Grill', 'Sharp', 'Closed'];
+    let catList = ['Meat', 'Vegetarian', 'Grill', 'Sharp', 'Closed'];
 
     return (
         <div className="app_wrapper">
            <div className="container-fluid">
-               <Header />
-
+               <Header/>
                <div className="content">
                     <Switch>
                         <Route exact path='/'>
