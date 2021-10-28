@@ -3,21 +3,23 @@ import style from './Sort.module.scss';
 
 const Sort = () => {
     const [sortBy, setSortBy] = useState('Popular');
-    const [toggleSort, setToggleSort] = useState(false);
+    const [visibleSort, setVisibleSort] = useState(false);
     const sortRef = useRef();
+
     let sortList = ['Popular', 'Price', 'Alphabet'];
 
     const toggleVisibleList = () => {
-        setToggleSort(!toggleSort);
+        setVisibleSort(!visibleSort);
     }
 
     const selectSort = (el) => {
         setSortBy(el.target.innerText);
-        // setToggleSort(!toggleSort);
     }
 
     const clickOffSortPopup = (e) => {
-        console.log(sortRef.current);
+        if (!e.path.includes(sortRef.current)) {
+            setVisibleSort(false);
+        }
     }
 
     useEffect(() => {
@@ -34,7 +36,7 @@ const Sort = () => {
                 </span>
             </div>
             <ul id='sort-dropdown-menu'
-                className={`${style.dropdownMenu} ${ toggleSort && style.visibleSortList } `}
+                className={`${style.dropdownMenu} ${ visibleSort && style.visibleSortList } `}
                 aria-labelledby="dropdownMenuLink">
                 {
                     sortList.map(function(el, index) {
