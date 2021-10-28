@@ -1,5 +1,12 @@
+@import "src/vars";
+
 .dropdown {
   position: relative;
+  .selectSort {
+    color: $b_color;
+    opacity: 1;
+    font-weight: 500;
+  }
   .dropdownMenu {
     position: absolute;
     bottom: auto;
@@ -23,8 +30,8 @@
       cursor: pointer;
       padding: 10px 15px;
       &:hover {
-        color: #FE5F1E;
-        background: rgba(254, 95, 30, 0.05);
+        color: $b_color;
+        background: rgba($b_color, .05);
       }
     }
   }
