@@ -9,7 +9,7 @@ const Home = ({ categories }) => {
             <div className='col-8'>
                 <Categories catClickItem={ (name) => console.log(name) } items={ categories }/>
             </div>
-            <div className="col-3">
+            <div className="col-3 d-flex align-items-center justify-content-center">
                 <Sort />
             </div>
         </div>
