@@ -17,7 +17,7 @@ const Sort = () => {
     }
 
     const clickOffSortPopup = (e) => {
-
+        console.log(sortRef.current);
     }
 
     useEffect(() => {
@@ -25,7 +25,7 @@ const Sort = () => {
     }, []);
 
     return (
-        <div className={ style.dropdown }>
+        <div ref={ sortRef } className={ style.dropdown }>
             <div className="sort__label">
                 <span onClick={ toggleVisibleList } className="btn dropdown-header" id="dropdownMenuButton1"
                         data-bs-toggle="dropdown" aria-expanded="false">
