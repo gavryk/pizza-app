@@ -7,6 +7,7 @@ import {Header} from "./components";
 
 const App = () => {
     let catList = ['Meat', 'Vegetarian', 'Grill', 'Sharp', 'Closed'];
+    let sortList = ['Popular', 'Price', 'Alphabet'];
 
     return (
         <div className="app_wrapper">
@@ -15,7 +16,7 @@ const App = () => {
                <div className="content">
                     <Switch>
                         <Route exact path='/'>
-                            <Home categories={ catList } />
+                            <Home categories={ catList } sortList={ sortList } />
                         </Route>
                         <Route exact path='/cart'>
                             <Cart />

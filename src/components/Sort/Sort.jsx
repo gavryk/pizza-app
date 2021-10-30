@@ -1,19 +1,21 @@
 import React, {useEffect, useRef, useState} from "react";
 import style from './Sort.module.scss';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCaretDown, faShoppingCart} from "@fortawesome/free-solid-svg-icons";
 
-const Sort = () => {
-    const [sortBy, setSortBy] = useState('Popular');
+const Sort = ({ sortList }) => {
     const [visibleSort, setVisibleSort] = useState(false);
+    const [ activeItem, setActiveItem ] = useState(0);
+    let activeLabel = sortList[activeItem];
     const sortRef = useRef();
-
-    let sortList = ['Popular', 'Price', 'Alphabet'];
 
     const toggleVisibleList = () => {
         setVisibleSort(!visibleSort);
     }
 
-    const selectSort = (el) => {
-        setSortBy(el.target.innerText);
+    const selectSort = (index, el) => {
+        setActiveItem(index);
+        setVisibleSort(false);
     }
 
     const clickOffSortPopup = (e) => {
@@ -28,20 +30,22 @@ const Sort = () => {
 
     return (
         <div ref={ sortRef } className={ style.dropdown }>
-            <div className="sort__label">
+            <div className={ style.sortLabel }>
                 <span onClick={ toggleVisibleList } className="btn dropdown-header" id="dropdownMenuButton1"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                    <b className='mx-2'>Sort By:</b>
-                    <span className={ style.selectSort }>{ sortBy }</span>
+                    <b className={`mx-2 ${ visibleSort ? style.caretActive : '' }`}><FontAwesomeIcon icon={faCaretDown} />Sort By:</b>
+                    <span className={ style.selectSort }>{ activeLabel }</span>
                 </span>
             </div>
             <ul id='sort-dropdown-menu'
                 className={`${style.dropdownMenu} ${ visibleSort && style.visibleSortList } `}
                 aria-labelledby="dropdownMenuLink">
-                {
+                {   sortList &&
                     sortList.map(function(el, index) {
                         return(
-                            <li key={`${el}_${index}`} onClick={ selectSort } className="dropdown-item">
+                            <li key={`${el}_${index}`}
+                                onClick={ () => selectSort(index, el) }
+                                className={`dropdown-item ${ activeItem === index && style.active }`}>
                                 { el }
                             </li>
                         )

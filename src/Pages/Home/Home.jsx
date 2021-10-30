@@ -2,7 +2,7 @@ import React from "react";
 import style from './Home.module.scss';
 import {Categories, Sort} from "../../components";
 
-const Home = ({ categories }) => {
+const Home = ({ categories, sortList }) => {
 
     return (
         <div className={`${ style.content__top } d-flex justify-content-between`}>
@@ -10,7 +10,7 @@ const Home = ({ categories }) => {
                 <Categories catClickItem={ (name) => console.log(name) } items={ categories }/>
             </div>
             <div className="col-3 d-flex align-items-center justify-content-center">
-                <Sort />
+                <Sort sortList={ sortList } />
             </div>
         </div>
     )

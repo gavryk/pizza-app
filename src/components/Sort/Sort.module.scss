@@ -2,6 +2,21 @@
 
 .dropdown {
   position: relative;
+  .sortLabel {
+    span {
+      b {
+        svg {
+          transition: all .2s ease-in-out;
+          margin-right: 5px;
+        }
+        &.caretActive {
+          svg {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+  }
   .selectSort {
     color: $b_color;
     opacity: 1;
@@ -10,7 +25,7 @@
   .dropdownMenu {
     position: absolute;
     bottom: auto;
-    width: 100%;
+    width: 150px;
     right: 0;
     visibility: hidden;
     opacity: 0;
@@ -29,7 +44,8 @@
       font-size: 14px;
       cursor: pointer;
       padding: 10px 15px;
-      &:hover {
+      &:hover,
+      &.active {
         color: $b_color;
         background: rgba($b_color, .05);
       }
