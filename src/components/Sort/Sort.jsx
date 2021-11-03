@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import style from './Sort.module.scss';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCaretDown, faShoppingCart} from "@fortawesome/free-solid-svg-icons";
+import {faCaretDown} from "@fortawesome/free-solid-svg-icons";
 
 const Sort = ({ sortList }) => {
     const [visibleSort, setVisibleSort] = useState(false);

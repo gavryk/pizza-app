@@ -1,9 +1,8 @@
 import React from "react";
 import style from './Home.module.scss';
-import {Categories, Sort} from "../../components";
+import {Categories, Sort, Pizza} from "../../components";
 
-const Home = ({ categories, sortList }) => {
-
+const Home = ({ items, categories, sortList }) => {
     return (
         <div className={style.homeContent}>
             <div className={`${ style.content__top } d-flex justify-content-between`}>
@@ -15,7 +14,22 @@ const Home = ({ categories, sortList }) => {
                 </div>
             </div>
             <div className={`${style.mainContent} pt-1 pb-3 px-4`}>
-                <h2>All Pizza</h2>
+                <h2 className=''>All Pizza</h2>
+                {   items &&
+                    <div className={`${style.pizzaWrapper} py-4`}>
+                        {
+                            items.map((item, index) => {
+                                return(
+                                    <Pizza
+                                        key={`${ item }_${ index }`}
+                                        imgUrl={item.imageUrl}
+                                        name={ item.name }
+                                    />
+                                )
+                            })
+                        }
+                    </div>
+                }
             </div>
         </div>
     )
