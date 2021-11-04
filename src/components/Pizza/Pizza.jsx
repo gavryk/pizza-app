@@ -9,11 +9,12 @@ const Pizza = ({ imgUrl, name }) => {
         <div className={ style.pizzaBlock }>
             <img className={`${ style.pizzaBlockImage } mb-2`} src={ imgUrl } alt="Pizza" />
             <h4 className={ style.pizzaBlockTitle }>{ name }</h4>
-            <div className="pizza-block__selector">
+            <div className={ style.pizzaBlockSelector }>
                 <ul>
                     {availableTypes.map((type, index) => (
                         <li
                             key={type}
+                            className={`${ style.active } mb-2`}
                         >
                             {type}
                         </li>
@@ -23,6 +24,7 @@ const Pizza = ({ imgUrl, name }) => {
                     {availableSizes.map((size, index) => (
                         <li
                             key={size}
+                            className={ style.active }
                         >
                             {size} sm
                         </li>
@@ -33,7 +35,6 @@ const Pizza = ({ imgUrl, name }) => {
                 <div className="pizza-block__price">
 
                 </div>
-
             </div>
         </div>
     )

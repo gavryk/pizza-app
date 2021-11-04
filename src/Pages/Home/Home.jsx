@@ -21,7 +21,7 @@ const Home = ({ items, categories, sortList }) => {
                             items.map((item, index) => {
                                 return(
                                     <Pizza
-                                        key={`${ item }_${ index }`}
+                                        key={item.id}
                                         imgUrl={item.imageUrl}
                                         name={ item.name }
                                     />
