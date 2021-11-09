@@ -1,12 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 import style from './Pizza.module.scss'
 import Button from "../Button/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 
 const Pizza = ({ imageUrl, name, price, ...props }) => {
+    const [activeType, setActiveType] = useState(0);
+    const [activeSize, setActiveSize] = useState(0);
+
     const availableTypes = ['thin', 'traditional'];
     const availableSizes = [26, 30, 40];
+
+    const onSelectType = (ind) => {
+        setActiveType(ind);
+    }
+    const onSelectSize = (ind) => {
+        setActiveSize(ind);
+    }
 
     return (
         <div className={ style.pizzaBlock }>
@@ -17,7 +27,8 @@ const Pizza = ({ imageUrl, name, price, ...props }) => {
                     {availableTypes.map((type, index) => (
                         <li
                             key={type}
-                            className={`${ style.active } mb-2`}
+                            className={`${ activeType === index ? style.active : '' } mb-2`}
+                            onClick={ () => onSelectType(index) }
                         >
                             {type}
                         </li>
@@ -27,8 +38,8 @@ const Pizza = ({ imageUrl, name, price, ...props }) => {
                     {availableSizes.map((size, index) => (
                         <li
                             key={size}
-                            className={ style.disabled }
-                            onClick={() => { alert('123') }}
+                            className={ activeSize === index ? style.active : '' }
+                            onClick={() => onSelectSize(index) }
                         >
                             {size} sm
                         </li>
