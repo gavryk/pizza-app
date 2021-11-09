@@ -22,8 +22,7 @@ const Home = ({ items, categories, sortList }) => {
                                 return(
                                     <Pizza
                                         key={item.id}
-                                        imgUrl={item.imageUrl}
-                                        name={ item.name }
+                                        { ...item }
                                     />
                                 )
                             })

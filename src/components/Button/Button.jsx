@@ -5,7 +5,7 @@ const Button = ({ children, active, ind, ...props }) => {
     return (
         <button
             key={ props.key }
-            className={`${ style.btn} ${ active ? style.active : '' }`}
+            className={`${ style.btn} ${ props.border && style.borderBtn } ${ active ? style.active : '' }`}
             onClick={ () => props.onClick && props.onClick() }
         >
             { children }

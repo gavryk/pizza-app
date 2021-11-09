@@ -1,15 +1,16 @@
 import React from "react";
 import style from './Pizza.module.scss'
+import Button from "../Button/Button";
 
-const Pizza = ({ imgUrl, name }) => {
+const Pizza = ({ imageUrl, name, price, ...props }) => {
     const availableTypes = ['thin', 'traditional'];
     const availableSizes = [26, 30, 40];
 
     return (
         <div className={ style.pizzaBlock }>
-            <img className={`${ style.pizzaBlockImage } mb-2`} src={ imgUrl } alt="Pizza" />
-            <h4 className={ style.pizzaBlockTitle }>{ name }</h4>
-            <div className={ style.pizzaBlockSelector }>
+            <img className={`${ style.pizzaBlock__image } mb-2`} src={ imageUrl } alt="Pizza" />
+            <h4 className={ style.pizzaBlock__title }>{ name }</h4>
+            <div className={ style.pizzaBlock__selector }>
                 <ul>
                     {availableTypes.map((type, index) => (
                         <li
@@ -31,9 +32,14 @@ const Pizza = ({ imgUrl, name }) => {
                     ))}
                 </ul>
             </div>
-            <div className="pizza-block__bottom">
-                <div className="pizza-block__price">
-
+            <div className={ style.pizzaBlock__bottom }>
+                <div className={ style.pizzaPrice }>
+                    <span>{ price } &#8372;</span>
+                </div>
+                <div className={ style.addButton }>
+                    <Button border >
+                        Add
+                    </Button>
                 </div>
             </div>
         </div>
