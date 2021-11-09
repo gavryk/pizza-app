@@ -4,9 +4,9 @@ import Button from "../Button/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 
-const Pizza = ({ imageUrl, name, price, ...props }) => {
-    const [activeType, setActiveType] = useState(0);
-    const [activeSize, setActiveSize] = useState(0);
+const Pizza = ({ imageUrl, name, price, types, sizes, ...props }) => {
+    const [activeType, setActiveType] = useState(types[0]);
+    const [activeSize, setActiveSize] = useState(sizes[0]);
 
     const availableTypes = ['thin', 'traditional'];
     const availableSizes = [26, 30, 40];
@@ -27,7 +27,7 @@ const Pizza = ({ imageUrl, name, price, ...props }) => {
                     {availableTypes.map((type, index) => (
                         <li
                             key={type}
-                            className={`${ activeType === index ? style.active : '' } mb-2`}
+                            className={`${ activeType === index ? style.active : '' } ${ !types.includes(index) && style.disabled } mb-2`}
                             onClick={ () => onSelectType(index) }
                         >
                             {type}
@@ -38,7 +38,7 @@ const Pizza = ({ imageUrl, name, price, ...props }) => {
                     {availableSizes.map((size, index) => (
                         <li
                             key={size}
-                            className={ activeSize === index ? style.active : '' }
+                            className={ `${ activeSize === index ? style.active : '' } ${ !sizes.includes(size) && style.disabled }` }
                             onClick={() => onSelectSize(index) }
                         >
                             {size} sm
