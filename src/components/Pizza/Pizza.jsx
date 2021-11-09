@@ -1,6 +1,8 @@
 import React from "react";
 import style from './Pizza.module.scss'
 import Button from "../Button/Button";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faPlus} from "@fortawesome/free-solid-svg-icons";
 
 const Pizza = ({ imageUrl, name, price, ...props }) => {
     const availableTypes = ['thin', 'traditional'];
@@ -25,19 +27,21 @@ const Pizza = ({ imageUrl, name, price, ...props }) => {
                     {availableSizes.map((size, index) => (
                         <li
                             key={size}
-                            className={ style.active }
+                            className={ style.disabled }
+                            onClick={() => { alert('123') }}
                         >
                             {size} sm
                         </li>
                     ))}
                 </ul>
             </div>
-            <div className={ style.pizzaBlock__bottom }>
+            <div className={`${ style.pizzaBlock__bottom } py-4`}>
                 <div className={ style.pizzaPrice }>
-                    <span>{ price } &#8372;</span>
+                    <span>From { price } &#8372;</span>
                 </div>
                 <div className={ style.addButton }>
                     <Button border >
+                        <FontAwesomeIcon icon={faPlus} />
                         Add
                     </Button>
                 </div>

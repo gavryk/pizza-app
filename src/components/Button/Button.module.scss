@@ -26,5 +26,20 @@
   &.borderBtn {
     background: transparent;
     border: 1px solid $b_color;
+    svg {
+      margin-right: 10px;
+      transition: all .4s ease-in-out;
+      path {
+        fill: $b_color;
+      }
+    }
+    &:hover {
+      background: $b_color;
+      svg {
+        path {
+          fill: #fff;
+        }
+      }
+    }
   }
 }

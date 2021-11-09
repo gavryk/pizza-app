@@ -34,7 +34,6 @@
           border-radius: 5px;
           cursor: auto;
         }
-
         &.disabled {
           opacity: 0.4;
           pointer-events: none;
@@ -43,11 +42,20 @@
     }
   }
   &__bottom {
+    display: grid;
+    grid-template-columns: auto 150px;
+    align-items: center;
     .pizzaPrice {
+      padding: 0 10px;
       span {
         font-weight: 700;
         color: #333;
         font-size: 20px;
+      }
+    }
+    .addButton {
+      button {
+        width: 100%;
       }
     }
   }
