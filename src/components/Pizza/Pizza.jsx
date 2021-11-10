@@ -3,6 +3,7 @@ import style from './Pizza.module.scss'
 import Button from "../Button/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import PropTypes from 'prop-types';
 
 const Pizza = ({ imageUrl, name, price, types, sizes, ...props }) => {
     const [activeType, setActiveType] = useState(types[0]);
