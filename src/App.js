@@ -4,6 +4,7 @@ import Home from "./Pages/Home/Home";
 import { Route, Switch } from "react-router-dom";
 import Cart from "./Pages/Cart/Cart";
 import {Header} from "./components";
+import axios from "axios";
 
 const App = () => {
     let catList = ['Meat', 'Vegetarian', 'Grill', 'Sharp', 'Closed'];
@@ -12,13 +13,8 @@ const App = () => {
     const [pizzas, setPizzas] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/db.json')
-            .then((data) => {
-                return data.json();
-            })
-            .then((res) => {
-                setPizzas(res.pizzas);
-            })
+        axios.get('http://localhost:3000/db.json')
+            .then(({ data }) => setPizzas(data.pizzas));
     }, []);
 
     return (

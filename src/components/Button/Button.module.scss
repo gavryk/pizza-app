@@ -28,8 +28,8 @@
     border: 1px solid $b_color;
     svg {
       margin-right: 10px;
-      transition: all .4s ease-in-out;
       path {
+        transition: all .4s ease-in-out;
         fill: $b_color;
       }
     }
