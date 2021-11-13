@@ -1,16 +1,10 @@
-import { createStore } from "redux";
+import {compose, createStore} from "redux";
+import rootReducers from './reducers';
 
-const testReducer = (state = 0, action) => {
-    switch (action.type) {
-        case 'increment':
-            return state + 1;
-        case 'decrement':
-            return state - 1;
-        default:
-            return state;
-    }
-}
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(testReducer);
+const store = createStore(rootReducers);
+
+window.store = store;
 
 export default store;

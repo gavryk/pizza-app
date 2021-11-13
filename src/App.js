@@ -1,10 +1,9 @@
 import './App.scss'
-import React, {useEffect, useState} from "react";
+import React from "react";
 import Home from "./Pages/Home/Home";
 import { Route, Switch } from "react-router-dom";
 import Cart from "./Pages/Cart/Cart";
-import {Button, Header} from "./components";
-import axios from "axios";
+import {Header} from "./components";
 
 const App = () => {
     let catList = ['Meat', 'Vegetarian', 'Grill', 'Sharp', 'Closed'];
@@ -14,13 +13,6 @@ const App = () => {
         {name: 'Alphabet', type: 'alphabet'}
     ];
 
-    const [pizzas, setPizzas] = useState([]);
-
-    useEffect(() => {
-        axios.get('http://localhost:3000/db.json')
-            .then(({ data }) => setPizzas(data.pizzas));
-    }, []);
-
     return (
         <div className="app_wrapper">
            <div className="container-fluid">
@@ -29,7 +21,6 @@ const App = () => {
                     <Switch>
                         <Route exact path='/'>
                             <Home
-                                items={ pizzas }
                                 categories={ catList }
                                 sortList={ sortList }
                             />
@@ -43,5 +34,7 @@ const App = () => {
         </div>
     );
 }
+
+
 
 export default App;

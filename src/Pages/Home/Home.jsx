@@ -1,8 +1,17 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import style from './Home.module.scss';
 import {Categories, Sort, Pizza} from "../../components";
+import axios from "axios";
 
-const Home = ({ items, categories, sortList }) => {
+const Home = ({ categories, sortList }) => {
+
+    const [pizzas, setPizzas] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:3000/db.json')
+            .then(({ data }) => setPizzas(data.pizzas));
+    }, []);
+
     return (
         <div className={style.homeContent}>
             <div className={`${ style.content__top } d-flex justify-content-between`}>
@@ -15,10 +24,10 @@ const Home = ({ items, categories, sortList }) => {
             </div>
             <div className={`${style.mainContent} pt-1 pb-3 px-4`}>
                 <h2 className=''>All Pizza</h2>
-                {   items &&
+                {   pizzas &&
                     <div className={`${style.pizzaWrapper} py-4`}>
                         {
-                            items.map((item, index) => {
+                            pizzas.map((item, index) => {
                                 return(
                                     <Pizza
                                         key={item.id}
