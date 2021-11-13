@@ -6,7 +6,7 @@ import {faCaretDown} from "@fortawesome/free-solid-svg-icons";
 const Sort = ({ sortList }) => {
     const [visibleSort, setVisibleSort] = useState(false);
     const [ activeItem, setActiveItem ] = useState(0);
-    let activeLabel = sortList[activeItem];
+    let activeLabel = sortList[activeItem].name;
     const sortRef = useRef();
 
     const toggleVisibleList = () => {
@@ -43,10 +43,10 @@ const Sort = ({ sortList }) => {
                 {   sortList &&
                     sortList.map(function(el, index) {
                         return(
-                            <li key={`${el}_${index}`}
+                            <li key={`${el.type}_${index}`}
                                 onClick={ () => selectSort(index, el) }
                                 className={`dropdown-item ${ activeItem === index && style.active }`}>
-                                { el }
+                                { el.name }
                             </li>
                         )
                     })
