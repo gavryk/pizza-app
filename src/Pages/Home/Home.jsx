@@ -50,12 +50,16 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-      setPizzas: (items) => {
-          dispatch(setPizzas(items))
-      }
-    };
+const mapDispatchToProps = {
+    setPizzas
 }
+
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         setPizzas: (items) => {
+//             dispatch(setPizzas(items))
+//         }
+//     };
+// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
