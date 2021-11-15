@@ -2,14 +2,15 @@ import React, {useEffect, useState} from "react";
 import style from './Home.module.scss';
 import {Categories, Sort, Pizza} from "../../components";
 import axios from "axios";
+import {setPizzas} from "../../redux/actions/pizzas";
+import { connect } from "react-redux";
 
-const Home = ({ categories, sortList }) => {
-
-    const [pizzas, setPizzas] = useState([]);
-
+const Home = ({ categories, sortList, ...props }) => {
     useEffect(() => {
         axios.get('http://localhost:3000/db.json')
-            .then(({ data }) => setPizzas(data.pizzas));
+            .then(({ data }) => {
+                props.setPizzas(data.pizzas);
+            });
     }, []);
 
     return (
@@ -24,10 +25,10 @@ const Home = ({ categories, sortList }) => {
             </div>
             <div className={`${style.mainContent} pt-1 pb-3 px-4`}>
                 <h2 className=''>All Pizza</h2>
-                {   pizzas &&
+                {   props.items &&
                     <div className={`${style.pizzaWrapper} py-4`}>
                         {
-                            pizzas.map((item, index) => {
+                            props.items.map((item, index) => {
                                 return(
                                     <Pizza
                                         key={item.id}
@@ -43,4 +44,18 @@ const Home = ({ categories, sortList }) => {
     )
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+    return {
+        items: state.pizzas.items
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+      setPizzas: (items) => {
+          dispatch(setPizzas(items))
+      }
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
