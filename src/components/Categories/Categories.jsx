@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import style from './Categories.module.scss'
 
 
-const Categories = ({ items, catClickItem }) => {
+const Categories = ({ items }) => {
     const [activeItem, setActiveItem] = useState(null)
 
     const onSelectCat = (index) => {

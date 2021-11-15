@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import style from './Home.module.scss';
-import {Categories, Sort, Pizza} from "../../components";
+import { Categories, Sort, Pizza } from "../../components";
 import axios from "axios";
-import {setPizzas} from "../../redux/actions/pizzas";
+import { setPizzas } from "../../redux/actions/pizzas";
 import { connect } from "react-redux";
 
 const Home = ({ categories, sortList, setPizzas, ...props }) => {
+
     useEffect(() => {
         axios.get('http://localhost:3000/db.json')
             .then(({ data }) => {
@@ -17,7 +18,7 @@ const Home = ({ categories, sortList, setPizzas, ...props }) => {
         <div className={style.homeContent}>
             <div className={`${ style.content__top } d-flex justify-content-between`}>
                 <div className='col-8'>
-                    <Categories catClickItem={ (name) => console.log(name) } items={ categories }/>
+                    <Categories items={ categories }/>
                 </div>
                 <div className="col-3 d-flex align-items-center justify-content-center">
                     <Sort sortList={ sortList } />
