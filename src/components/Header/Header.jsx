@@ -4,8 +4,11 @@ import logo from '../../assets/img/pizza-logo.png';
 import {NavLink} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faShoppingCart} from "@fortawesome/free-solid-svg-icons";
+import {faMoon as farMoon} from "@fortawesome/free-regular-svg-icons";
+import {faSun as farSun} from "@fortawesome/free-regular-svg-icons";
+import Button from "../Button/Button";
 
-const Header = () => {
+const Header = ({ mode, toggleMode }) => {
     let totalCount = 2;
     let totalSum = 250;
 
@@ -17,7 +20,10 @@ const Header = () => {
                     <h4>REACT PIZZA</h4>
                 </NavLink>
 
-                <div className={`${style.headerButton} col-2 d-flex justify-content-end`}>
+                <div className={`${style.headerButton} col-3 d-flex justify-content-end`}>
+                    <Button active={ mode && true }  onClick={ toggleMode } >
+                        <FontAwesomeIcon icon={ mode ? farMoon : farSun } />
+                    </Button>
                     <NavLink to='/cart' type='button' className={ style.btnCart }>
                         <span className={ style.sum }>{ totalSum } &#8372;</span>
                         <span className={ style.cart }><FontAwesomeIcon icon={faShoppingCart} />{ totalCount }</span>
