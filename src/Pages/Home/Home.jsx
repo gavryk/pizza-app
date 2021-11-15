@@ -5,11 +5,11 @@ import axios from "axios";
 import {setPizzas} from "../../redux/actions/pizzas";
 import { connect } from "react-redux";
 
-const Home = ({ categories, sortList, ...props }) => {
+const Home = ({ categories, sortList, setPizzas, ...props }) => {
     useEffect(() => {
         axios.get('http://localhost:3000/db.json')
             .then(({ data }) => {
-                props.setPizzas(data.pizzas);
+                setPizzas(data.pizzas);
             });
     }, []);
 
