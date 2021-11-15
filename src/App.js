@@ -1,17 +1,22 @@
 import './App.scss'
-import React from "react";
+import React, { useEffect } from "react";
 import Home from "./Pages/Home/Home";
 import { Route, Switch } from "react-router-dom";
 import Cart from "./Pages/Cart/Cart";
 import {Header} from "./components";
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
+import { setPizzas } from './redux/actions/pizzas';
 
 const App = () => {
-    let catList = ['Meat', 'Vegetarian', 'Grill', 'Sharp', 'Closed'];
-    let sortList = [
-        {name: 'Popular', type: 'popular'},
-        {name: 'Price', type: 'price'},
-        {name: 'Alphabet', type: 'alphabet'}
-    ];
+    const dispatch = useDispatch();
+    
+    useEffect(() => {
+        axios.get('http://localhost:3000/db.json')
+            .then(({ data }) => {
+                dispatch(setPizzas(data.pizzas));
+            });
+    }, []);
 
     return (
         <div className="app_wrapper">
@@ -20,10 +25,7 @@ const App = () => {
                <div className="content">
                     <Switch>
                         <Route exact path='/'>
-                            <Home
-                                categories={ catList }
-                                sortList={ sortList }
-                            />
+                            <Home />
                         </Route>
                         <Route exact path='/cart'>
                             <Cart />

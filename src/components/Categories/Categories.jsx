@@ -2,8 +2,8 @@ import React, {useState} from "react";
 import style from './Categories.module.scss'
 
 
-const Categories = ({ items }) => {
-    const [activeItem, setActiveItem] = useState(null)
+const Categories = ({ catList }) => {
+    const [activeItem, setActiveItem] = useState(null);
 
     const onSelectCat = (index) => {
         setActiveItem(index);
@@ -17,7 +17,7 @@ const Categories = ({ items }) => {
                 All
             </li>
             {
-                items && items.map((cat, index) => {
+                catList && catList.map((cat, index) => {
                     return (
                         <li className={`${style.btn} ${ activeItem === index && style.active }`}
                             onClick={ () => onSelectCat(index) }

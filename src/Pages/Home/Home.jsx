@@ -1,27 +1,28 @@
-import React, {useEffect} from "react";
+import React from "react";
 import style from './Home.module.scss';
 import { Categories, Sort, Pizza } from "../../components";
-import axios from "axios";
-import { setPizzas } from "../../redux/actions/pizzas";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 
-const Home = ({ categories, sortList }) => {
-    const dispatch = useDispatch();
-    const pizzas = useSelector((state) => state.pizzas.items);
+const Home = () => {
+    let catList = ['Meat', 'Vegetarian', 'Grill', 'Sharp', 'Closed'];
+    let sortList = [
+        {name: 'Popular', type: 'popular'},
+        {name: 'Price', type: 'price'},
+        {name: 'Alphabet', type: 'alphabet'}
+    ];
 
-    useEffect(() => {
-        axios.get('http://localhost:3000/db.json')
-            .then(({ data }) => {
-                dispatch(setPizzas(data.pizzas));
-            });
-    }, []);
+    const { items } = useSelector(({pizzas}) => {
+        return {
+            items: pizzas.items,
+        }
+    });
 
     return (
         <div className={style.homeContent}>
             <div className={`${ style.content__top } d-flex justify-content-between`}>
                 <div className='col-8'>
-                    <Categories items={ categories }/>
+                    <Categories catList={ catList } />
                 </div>
                 <div className="col-3 d-flex align-items-center justify-content-center">
                     <Sort sortList={ sortList } />
@@ -29,10 +30,10 @@ const Home = ({ categories, sortList }) => {
             </div>
             <div className={`${style.mainContent} pt-1 pb-3 px-4`}>
                 <h2 className=''>All Pizza</h2>
-                {   pizzas &&
+                {   items &&
                     <div className={`${style.pizzaWrapper} py-4`}>
                         {
-                            pizzas.map((item, index) => {
+                            items.map((item, index) => {
                                 return(
                                     <Pizza
                                         key={item.id}
