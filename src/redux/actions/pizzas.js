@@ -1,3 +1,7 @@
+export const fetchPizzas = () => {
+    
+}
+
 export const setPizzas = (items) => {
     return {
         type: 'SET_PIZZAS',
