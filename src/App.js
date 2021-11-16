@@ -13,7 +13,7 @@ const App = () => {
     const [theme, setTheme] = useState(false);
 
     window.test = () => {
-        axios.get('http://localhost:3000/db.json')
+        axios.get('http://localhost:3001/pizzas')
             .then(({ data }) => {
                 dispatch(setPizzas(data.pizzas));
             });
