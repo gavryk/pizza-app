@@ -11,18 +11,11 @@ import { setPizzas } from './redux/actions/pizzas';
 const App = () => {
     const dispatch = useDispatch();
     const [theme, setTheme] = useState(false);
-
-    window.test = () => {
-        axios.get('http://localhost:3001/pizzas')
-            .then(({ data }) => {
-                dispatch(setPizzas(data.pizzas));
-            });
-    }
     
     useEffect(() => {
-        axios.get('http://localhost:3000/db.json')
+        axios.get('http://localhost:3001/pizzas')
             .then(({ data }) => {
-                dispatch(setPizzas(data.pizzas));
+                dispatch(setPizzas(data));
             });
 
 
@@ -33,7 +26,7 @@ const App = () => {
     }, []);
 
 
-    React.useEffect(() => {
+    useEffect(() => {
         theme ? document.body.classList.add("dark") : document.body.classList.remove("dark");
         const json = JSON.stringify(theme);
         localStorage.setItem("theme", json);
