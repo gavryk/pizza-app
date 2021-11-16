@@ -20,7 +20,10 @@ const Pizza = ({ imageUrl, name, price, types, sizes}) => {
     }
 
     return (
-        <div className={ style.pizzaBlock }>
+        <div
+            className={ `${style.pizzaBlock}` }
+            draggable
+        >
             <img className={`${ style.pizzaBlock__image } mb-2`} src={ imageUrl } alt="Pizza" />
             <h4 className={ style.pizzaBlock__title }>{ name }</h4>
             <div className={ style.pizzaBlock__selector }>

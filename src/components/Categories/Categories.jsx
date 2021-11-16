@@ -2,12 +2,13 @@ import React, {useState} from "react";
 import style from './Categories.module.scss'
 
 
-const Categories = ({ catList }) => {
+const Categories = React.memo(({ catList, onClickItem }) => {
     const [activeItem, setActiveItem] = useState(null);
 
     const onSelectCat = (index) => {
         setActiveItem(index);
-    }
+        onClickItem(index);
+    };
 
     return(
         <ul className='d-flex justify-content-start align-items-center'>
@@ -30,6 +31,6 @@ const Categories = ({ catList }) => {
             }
         </ul>
     )
-}
+});
 
 export default Categories;

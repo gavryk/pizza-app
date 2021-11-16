@@ -3,7 +3,7 @@ import style from './Sort.module.scss';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCaretDown} from "@fortawesome/free-solid-svg-icons";
 
-const Sort = ({ sortList }) => {
+const Sort = React.memo(({ sortList }) => {
     const [visibleSort, setVisibleSort] = useState(false);
     const [ activeItem, setActiveItem ] = useState(0);
     let activeLabel = sortList[activeItem].name;
@@ -32,7 +32,7 @@ const Sort = ({ sortList }) => {
         <div ref={ sortRef } className={ style.dropdown }>
             <div className={ style.sortLabel }>
                 <span onClick={ toggleVisibleList } className="btn dropdown-header" id="dropdownMenuButton1"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                      data-bs-toggle="dropdown" aria-expanded="false">
                     <b className={`mx-2 ${ visibleSort ? style.caretActive : '' }`}><FontAwesomeIcon icon={faCaretDown} />Sort By:</b>
                     <span className={ style.selectSort }>{ activeLabel }</span>
                 </span>
@@ -41,19 +41,19 @@ const Sort = ({ sortList }) => {
                 className={`${style.dropdownMenu} ${ visibleSort && style.visibleSortList } `}
                 aria-labelledby="dropdownMenuLink">
                 {   sortList &&
-                    sortList.map(function(el, index) {
-                        return(
-                            <li key={`${el.type}_${index}`}
-                                onClick={ () => selectSort(index, el) }
-                                className={`dropdown-item ${ activeItem === index && style.active }`}>
-                                { el.name }
-                            </li>
-                        )
-                    })
+                sortList.map(function(el, index) {
+                    return(
+                        <li key={`${el.type}_${index}`}
+                            onClick={ () => selectSort(index, el) }
+                            className={`dropdown-item ${ activeItem === index && style.active }`}>
+                            { el.name }
+                        </li>
+                    )
+                })
                 }
             </ul>
         </div>
     )
-}
+})
 
 export default Sort;

@@ -11,6 +11,13 @@ import { setPizzas } from './redux/actions/pizzas';
 const App = () => {
     const dispatch = useDispatch();
     const [theme, setTheme] = useState(false);
+
+    window.test = () => {
+        axios.get('http://localhost:3000/db.json')
+            .then(({ data }) => {
+                dispatch(setPizzas(data.pizzas));
+            });
+    }
     
     useEffect(() => {
         axios.get('http://localhost:3000/db.json')

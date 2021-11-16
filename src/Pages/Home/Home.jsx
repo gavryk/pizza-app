@@ -1,28 +1,32 @@
-import React from "react";
+import React, {useCallback} from "react";
 import style from './Home.module.scss';
 import { Categories, Sort, Pizza } from "../../components";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {setCategory} from "../../redux/actions/filters";
 
+const catList = ['Meat', 'Vegetarian', 'Grill', 'Sharp', 'Closed'];
+const sortList = [
+    {name: 'Popular', type: 'popular'},
+    {name: 'Price', type: 'price'},
+    {name: 'Alphabet', type: 'alphabet'}
+];
 
 const Home = () => {
-    let catList = ['Meat', 'Vegetarian', 'Grill', 'Sharp', 'Closed'];
-    let sortList = [
-        {name: 'Popular', type: 'popular'},
-        {name: 'Price', type: 'price'},
-        {name: 'Alphabet', type: 'alphabet'}
-    ];
+    const dispatch = useDispatch();
+    const items  = useSelector(({pizzas}) => pizzas.items);
 
-    const { items } = useSelector(({pizzas}) => {
-        return {
-            items: pizzas.items,
-        }
-    });
+    const onSelectCat = useCallback((index) => {
+        dispatch(setCategory(index))
+    }, []);
 
     return (
         <div className={style.homeContent}>
             <div className={`${ style.content__top } d-flex justify-content-between`}>
                 <div className='col-8'>
-                    <Categories catList={ catList } />
+                    <Categories
+                        onClickItem={ onSelectCat }
+                        catList={ catList }
+                    />
                 </div>
                 <div className="col-3 d-flex align-items-center justify-content-center">
                     <Sort sortList={ sortList } />
