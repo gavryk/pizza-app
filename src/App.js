@@ -4,36 +4,25 @@ import Home from "./Pages/Home/Home";
 import { Route, Switch } from "react-router-dom";
 import Cart from "./Pages/Cart/Cart";
 import {Header} from "./components";
-import { useDispatch } from 'react-redux';
-import axios from 'axios';
-import { setPizzas } from './redux/actions/pizzas';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPizzas } from './redux/actions/pizzas';
+import {toggleAppTheme } from './redux/actions/settings';
 
 const App = () => {
     const dispatch = useDispatch();
-    const [theme, setTheme] = useState(false);
+    const theme = useSelector(({settings}) => settings.theme);
     
     useEffect(() => {
-        axios.get('http://localhost:3001/pizzas')
-            .then(({ data }) => {
-                dispatch(setPizzas(data));
-            });
-
-
-        //Get LocalStorage Theme
-        const json = localStorage.getItem("theme");
-        const currentMode = JSON.parse(json);
-        currentMode && setTheme(!theme);
+        dispatch(fetchPizzas());    
     }, []);
 
 
     useEffect(() => {
         theme ? document.body.classList.add("dark") : document.body.classList.remove("dark");
-        const json = JSON.stringify(theme);
-        localStorage.setItem("theme", json);
     }, [theme]);
 
     const toggleMode = () => {
-        setTheme(!theme);
+        dispatch(toggleAppTheme());
     }
 
     return (
