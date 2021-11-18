@@ -10,6 +10,11 @@ const pizzas = (state = initState, action) => {
                 ...state,
                 items: action.payload
             }
+        case 'SET_LOADING':
+            return {
+                ...state,
+                isLoaded: true
+            }    
         default:
             return state;
     }

@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect} from "react";
 import style from './Home.module.scss';
-import { Categories, Sort, Pizza } from "../../components";
+import { Categories, Sort, Pizza, PizzaLoader } from "../../components";
 import {useDispatch, useSelector} from "react-redux";
 import {setCategory} from "../../redux/actions/filters";
 import { fetchPizzas } from '../../redux/actions/pizzas'
@@ -14,6 +14,7 @@ const sortList = [
 
 const Home = () => {
     const dispatch = useDispatch();
+    const isLoaded  = useSelector(({pizzas}) => pizzas.isLoaded);
     const items  = useSelector(({pizzas}) => pizzas.items);
    
     useEffect(() => { 
@@ -39,20 +40,20 @@ const Home = () => {
             </div>
             <div className={`${style.mainContent} pt-1 pb-3 px-4`}>
                 <h2 className=''>All Pizza</h2>
-                {   items &&
-                    <div className={`${style.pizzaWrapper} py-4`}>
-                        {
-                            items.map((item, index) => {
-                                return(
-                                    <Pizza
-                                        key={item.id}
-                                        { ...item }
-                                    />
-                                )
-                            })
-                        }
-                    </div>
-                }
+                <div className={`${style.pizzaWrapper} py-4`}>
+                    {
+                        isLoaded 
+                        ? items.map((item, index) => {
+                            return(
+                                <Pizza
+                                    key={item.id}
+                                    { ...item }
+                                />
+                            )
+                        }) 
+                        : Array(10).fill(<PizzaLoader />)
+                    }
+                </div>
             </div>
         </div>
     )

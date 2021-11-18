@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import PropTypes from 'prop-types';
 
-const Pizza = ({ imageUrl, name, price, types, sizes}) => {
+const Pizza = ({ imageUrl, name, price, types, sizes, isLoaded}) => {
     const [activeType, setActiveType] = useState(types[0]);
     const [activeSize, setActiveSize] = useState(sizes[0]);
 
@@ -20,10 +20,7 @@ const Pizza = ({ imageUrl, name, price, types, sizes}) => {
     }
 
     return (
-        <div
-            className={ `${style.pizzaBlock}` }
-            draggable
-        >
+        <div className={ `${style.pizzaBlock}` }>
             <img className={`${ style.pizzaBlock__image } mb-2`} src={ imageUrl } alt="Pizza" />
             <h4 className={ style.pizzaBlock__title }>{ name }</h4>
             <div className={ style.pizzaBlock__selector }>
