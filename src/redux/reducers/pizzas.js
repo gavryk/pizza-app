@@ -13,7 +13,7 @@ const pizzas = (state = initState, action) => {
         case 'SET_LOADING':
             return {
                 ...state,
-                isLoaded: true
+                isLoaded: action.payload
             }    
         default:
             return state;

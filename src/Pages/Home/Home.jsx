@@ -16,20 +16,22 @@ const Home = () => {
     const dispatch = useDispatch();
     const isLoaded  = useSelector(({pizzas}) => pizzas.isLoaded);
     const items  = useSelector(({pizzas}) => pizzas.items);
+    const { category, sortBy }  = useSelector(({filters}) => filters);
    
     useEffect(() => { 
         dispatch(fetchPizzas());
-    }, []);
+    }, [dispatch, category]);
 
     const onSelectCat = useCallback((index) => {
         dispatch(setCategory(index))
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className={style.homeContent}>
             <div className={`${ style.content__top } d-flex justify-content-between`}>
                 <div className='col-8'>
                     <Categories
+                        activeCategory={category}
                         onClickItem={ onSelectCat }
                         catList={ catList }
                     />
@@ -43,7 +45,7 @@ const Home = () => {
                 <div className={`${style.pizzaWrapper} py-4`}>
                     {
                         isLoaded 
-                        ? items.map((item, index) => {
+                        ? items.map((item) => {
                             return(
                                 <Pizza
                                     key={item.id}
@@ -51,7 +53,9 @@ const Home = () => {
                                 />
                             )
                         }) 
-                        : Array(10).fill(<PizzaLoader />)
+                        : Array(10)
+                            .fill(0)
+                            .map((_, index) => <PizzaLoader key={index} />)
                     }
                 </div>
             </div>

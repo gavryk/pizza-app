@@ -1,18 +1,16 @@
-import React, {useState} from "react";
+import React from "react";
 import style from './Categories.module.scss'
 
 
-const Categories = React.memo(({ catList, onClickItem }) => {
-    const [activeItem, setActiveItem] = useState(null);
+const Categories = React.memo(({ activeCategory, catList, onClickItem }) => {
 
     const onSelectCat = (index) => {
-        setActiveItem(index);
         onClickItem(index);
     };
 
     return(
         <ul className='d-flex justify-content-start align-items-center'>
-            <li className={`${ style.btn } ${ activeItem === null && style.active }`}
+            <li className={`${ style.btn } ${ activeCategory === null && style.active }`}
                 onClick={ () => onSelectCat(null) }
             >
                 All
@@ -20,7 +18,7 @@ const Categories = React.memo(({ catList, onClickItem }) => {
             {
                 catList && catList.map((cat, index) => {
                     return (
-                        <li className={`${style.btn} ${ activeItem === index && style.active }`}
+                        <li className={`${style.btn} ${ activeCategory === index && style.active }`}
                             onClick={ () => onSelectCat(index) }
                             key={`${ cat }_${ index }`}
                         >
