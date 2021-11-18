@@ -1,21 +1,15 @@
 import './App.scss'
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import Home from "./Pages/Home/Home";
 import { Route, Switch } from "react-router-dom";
 import Cart from "./Pages/Cart/Cart";
 import {Header} from "./components";
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPizzas } from './redux/actions/pizzas';
 import {toggleAppTheme } from './redux/actions/settings';
 
 const App = () => {
     const dispatch = useDispatch();
     const theme = useSelector(({settings}) => settings.theme);
-    
-    useEffect(() => { 
-        dispatch(fetchPizzas());   
-    }, []);
-
 
     useEffect(() => {
         theme ? document.body.classList.add("dark") : document.body.classList.remove("dark");
@@ -24,6 +18,7 @@ const App = () => {
     const toggleMode = () => {
         dispatch(toggleAppTheme());
     }
+
 
     return (
         <div className="app_wrapper">
