@@ -12,8 +12,8 @@ const App = () => {
     const dispatch = useDispatch();
     const theme = useSelector(({settings}) => settings.theme);
     
-    useEffect(() => {
-        dispatch(fetchPizzas());    
+    useEffect(() => { 
+        dispatch(fetchPizzas());   
     }, []);
 
 
