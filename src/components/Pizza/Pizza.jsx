@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import PropTypes from 'prop-types';
 
-const Pizza = ({ imageUrl, name, price, types, sizes, isLoaded}) => {
+const Pizza = ({ imageUrl, name, price, types, sizes}) => {
     const [activeType, setActiveType] = useState(types[0]);
     const [activeSize, setActiveSize] = useState(sizes[0]);
 
