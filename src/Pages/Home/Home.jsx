@@ -7,9 +7,9 @@ import { fetchPizzas } from '../../redux/actions/pizzas'
 
 const catList = ['Meat', 'Vegetarian', 'Grill', 'Sharp', 'Closed'];
 const sortList = [
-    {name: 'Popular', type: 'rating'},
-    {name: 'Price', type: 'price'},
-    {name: 'Alphabet', type: 'name'}
+    {name: 'Popular', type: 'rating', order: 'desc'},
+    {name: 'Price', type: 'price', order: 'desc'},
+    {name: 'Alphabet', type: 'name', order: 'asc'}
 ];
 
 const Home = () => {
@@ -41,7 +41,7 @@ const Home = () => {
                     />
                 </div>
                 <div className="col-3 d-flex align-items-center justify-content-center">
-                    <Sort onClickSortBy={ onClickSortBy } sortBy={ sortBy } sortList={ sortList } />
+                    <Sort onClickSortBy={ onClickSortBy } sortBy={ sortBy.type } sortList={ sortList } />
                 </div>
             </div>
             <div className={`${style.mainContent} pt-1 pb-3 px-4`}>

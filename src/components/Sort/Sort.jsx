@@ -44,8 +44,8 @@ const Sort = React.memo(({ sortList, sortBy, onClickSortBy }) => {
                 sortList.map(function(el, index) {
                     return(
                         <li key={`${el.type}_${index}`}
-                            onClick={ () => selectSort(el.type) }
-                            className={`dropdown-item ${ sortBy === el.type && style.active }`}>
+                            onClick={ () => selectSort(el) }
+                            className={`dropdown-item ${ sortBy === el && style.active }`}>
                             { el.name }
                         </li>
                     )
