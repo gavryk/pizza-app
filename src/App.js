@@ -20,6 +20,8 @@ const App = () => {
         dispatch(toggleAppTheme()); 
     }
 
+    
+
 	return (
         <div className="app_wrapper">
            <div className="container-fluid">
