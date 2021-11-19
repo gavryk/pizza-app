@@ -14,13 +14,13 @@ const App = () => {
     useEffect(() => {
         theme ? document.body.classList.add("dark") : document.body.classList.remove("dark");
     }, [theme]);
-
+    
+    
     const toggleMode = () => {
-        dispatch(toggleAppTheme());
+        dispatch(toggleAppTheme()); 
     }
 
-
-    return (
+	return (
         <div className="app_wrapper">
            <div className="container-fluid">
                <Header mode={ theme } toggleMode={ toggleMode } />
