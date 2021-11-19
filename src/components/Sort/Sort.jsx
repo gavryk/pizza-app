@@ -2,19 +2,19 @@ import React, {useEffect, useRef, useState} from "react";
 import style from './Sort.module.scss';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCaretDown} from "@fortawesome/free-solid-svg-icons";
+import PropTypes from 'prop-types';
 
-const Sort = React.memo(({ sortList }) => {
+const Sort = React.memo(({ sortList, sortBy, onClickSortBy }) => {
     const [visibleSort, setVisibleSort] = useState(false);
-    const [ activeItem, setActiveItem ] = useState(0);
-    let activeLabel = sortList[activeItem].name;
+    let activeLabel = sortList.find(obj => obj.type === sortBy).name;
     const sortRef = useRef();
 
     const toggleVisibleList = () => {
         setVisibleSort(!visibleSort);
     }
 
-    const selectSort = (index, el) => {
-        setActiveItem(index);
+    const selectSort = (type) => {
+        onClickSortBy(type);
         setVisibleSort(false);
     }
 
@@ -44,8 +44,8 @@ const Sort = React.memo(({ sortList }) => {
                 sortList.map(function(el, index) {
                     return(
                         <li key={`${el.type}_${index}`}
-                            onClick={ () => selectSort(index, el) }
-                            className={`dropdown-item ${ activeItem === index && style.active }`}>
+                            onClick={ () => selectSort(el.type) }
+                            className={`dropdown-item ${ sortBy === el.type && style.active }`}>
                             { el.name }
                         </li>
                     )
@@ -55,5 +55,15 @@ const Sort = React.memo(({ sortList }) => {
         </div>
     )
 })
+
+Sort.propTypes = {
+    sortBy: PropTypes.string,
+    sortList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    onClickSortBy: PropTypes.func.isRequired
+}
+
+Sort.defaultProps = { 
+    sortList: []
+}
 
 export default Sort;

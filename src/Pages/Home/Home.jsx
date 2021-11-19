@@ -2,7 +2,7 @@ import React, {useCallback, useEffect} from "react";
 import style from './Home.module.scss';
 import { Categories, Sort, Pizza, PizzaLoader } from "../../components";
 import {useDispatch, useSelector} from "react-redux";
-import {setCategory} from "../../redux/actions/filters";
+import {setCategory, setSortBy} from "../../redux/actions/filters";
 import { fetchPizzas } from '../../redux/actions/pizzas'
 
 const catList = ['Meat', 'Vegetarian', 'Grill', 'Sharp', 'Closed'];
@@ -20,10 +20,14 @@ const Home = () => {
    
     useEffect(() => { 
         dispatch(fetchPizzas());
-    }, [dispatch, category]);
+    }, [dispatch, category, sortBy]);
 
     const onSelectCat = useCallback((index) => {
         dispatch(setCategory(index))
+    }, [dispatch]);
+
+    const onClickSortBy = useCallback((type) => {
+        dispatch(setSortBy(type))
     }, [dispatch]);
 
     return (
@@ -37,7 +41,7 @@ const Home = () => {
                     />
                 </div>
                 <div className="col-3 d-flex align-items-center justify-content-center">
-                    <Sort sortList={ sortList } />
+                    <Sort onClickSortBy={ onClickSortBy } sortBy={ sortBy } sortList={ sortList } />
                 </div>
             </div>
             <div className={`${style.mainContent} pt-1 pb-3 px-4`}>
