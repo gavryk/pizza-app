@@ -32,7 +32,7 @@ const Home = () => {
                 <div className='col-8'>
                     <Categories
                         activeCategory={category}
-                        onClickItem={ onSelectCat }
+                        onClickCategory={ onSelectCat }
                         catList={ catList }
                     />
                 </div>

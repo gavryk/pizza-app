@@ -1,11 +1,12 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import style from './Categories.module.scss'
 
 
-const Categories = React.memo(({ activeCategory, catList, onClickItem }) => {
+const Categories = React.memo(({ activeCategory, catList, onClickCategory }) => {
 
     const onSelectCat = (index) => {
-        onClickItem(index);
+        onClickCategory(index);
     };
 
     return(
@@ -30,5 +31,17 @@ const Categories = React.memo(({ activeCategory, catList, onClickItem }) => {
         </ul>
     )
 });
+
+Categories.propTypes = {
+    activeCategory: PropTypes.number.isRequired,
+    catList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    onClickCategory: PropTypes.func
+}
+
+Categories.defaultProps = { 
+    activeCategory: null, 
+    catList: []
+}
+
 
 export default Categories;
