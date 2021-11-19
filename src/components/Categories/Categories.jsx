@@ -4,15 +4,11 @@ import style from './Categories.module.scss'
 
 
 const Categories = React.memo(({ activeCategory, catList, onClickCategory }) => {
-
-    const onSelectCat = (index) => {
-        onClickCategory(index);
-    };
-
+    
     return(
         <ul className='d-flex justify-content-start align-items-center'>
             <li className={`${ style.btn } ${ activeCategory === null && style.active }`}
-                onClick={ () => onSelectCat(null) }
+                onClick={ () => onClickCategory(null) }
             >
                 All
             </li>
@@ -20,7 +16,7 @@ const Categories = React.memo(({ activeCategory, catList, onClickCategory }) => 
                 catList && catList.map((cat, index) => {
                     return (
                         <li className={`${style.btn} ${ activeCategory === index && style.active }`}
-                            onClick={ () => onSelectCat(index) }
+                            onClick={ () => onClickCategory(index) }
                             key={`${ cat }_${ index }`}
                         >
                             { cat }
