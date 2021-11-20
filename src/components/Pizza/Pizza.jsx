@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import PropTypes from 'prop-types';
 
-const Pizza = ({ id, imageUrl, name, price, types, sizes, addToCart}) => {
+const Pizza = ({ id, imageUrl, name, price, types, sizes, addToCart, inCartCount}) => {
     const [activeType, setActiveType] = useState(types[0]);
     const [activeSize, setActiveSize] = useState(0);
 
@@ -67,6 +67,7 @@ const Pizza = ({ id, imageUrl, name, price, types, sizes, addToCart}) => {
                     <Button border onClick={addPizza}>
                         <FontAwesomeIcon icon={faPlus} />
                         Add
+                        { inCartCount && <span className={ style.countInCart }>{ inCartCount }</span> }
                     </Button>
                 </div>
             </div>
@@ -80,7 +81,8 @@ Pizza.propTypes = {
     price: PropTypes.number.isRequired,
     types: PropTypes.arrayOf(PropTypes.number).isRequired,
     sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
-    addToCart: PropTypes.func
+    addToCart: PropTypes.func,
+    inCartCount: PropTypes.number
 }
 
 Pizza.defaultProps = {

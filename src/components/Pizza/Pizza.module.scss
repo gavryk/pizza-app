@@ -2,6 +2,7 @@
 
 .pizzaBlock {
   // background: #fff;
+  opacity: 1;
   &__image {
     display: block;
     width: 260px;
@@ -44,7 +45,7 @@
   }
   &__bottom {
     display: grid;
-    grid-template-columns: auto 150px;
+    grid-template-columns: repeat(2, auto);
     align-items: center;
     .pizzaPrice {
       padding: 0 10px;
@@ -56,7 +57,26 @@
     }
     .addButton {
       button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: row;
         width: 100%;
+        .countInCart {
+          margin: 10px 0;
+          border-radius: 50%;
+          font-size: .8em;
+          color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 22px;
+          min-height: 21px; 
+          line-height: 1;
+          margin: 0 0 0 10px;
+          background-color: $b_color;
+        }
       }
     }
   }

@@ -2,7 +2,7 @@
 
 .btn {
   color: #000;
-  padding: 10px 25px;
+  padding: 10px;
   background: #F9F9F9;
   border-radius: 30px;
   cursor: pointer;
@@ -23,6 +23,9 @@
     color: #fff;
   }
 
+  &.toggleModeBtn {
+    padding: 10px 20px;
+  }
   &.borderBtn {
     background: transparent;
     border: 1px solid $b_color;
@@ -33,12 +36,19 @@
         fill: $b_color;
       }
     }
+    span {
+      transition: all, .4s ease-in-out;
+    }
     &:hover {
       background: $b_color;
       svg {
         path {
           fill: #fff;
         }
+      }
+      span {
+        background: #fff;
+        color: $b_color;
       }
     }
   }

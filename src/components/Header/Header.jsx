@@ -21,7 +21,7 @@ const Header = ({ mode, toggleMode }) => {
                 </NavLink>
 
                 <div className={`${style.headerButton} col-3 d-flex justify-content-end`}>
-                    <Button active={ mode && true }  onClick={ toggleMode } >
+                    <Button active={ mode && true } toggleModeBtn onClick={ toggleMode } >
                         <FontAwesomeIcon icon={ mode ? farMoon : farSun } />
                     </Button>
                     <NavLink to='/cart' type='button' className={ style.btnCart }>
