@@ -6,8 +6,8 @@ import style from './Cart.module.scss';
 
 const Cart = () => {
     return (
-        <div className={ style.cartPage }>
-            <div className={`${ style.cartPage__top } d-flex align-items-center justify-content-between`}>
+        <div className={ style.cartPageContainer }>
+            <div className={`${ style.cartPageContainer__top } d-flex align-items-center justify-content-between`}>
                 <h2 className={`${ style.title } d-flex align-items-center justify-content-start`}>
                     <FontAwesomeIcon icon={faShoppingCart} />
                     <span>Cart</span>
@@ -16,6 +16,10 @@ const Cart = () => {
                     <FontAwesomeIcon icon={faTrashAlt} />
                     <span>Clear Cart</span>
                 </div>
+            </div>
+
+            <div className={ style.cartWrapper }>
+                
             </div>
         </div>
     )

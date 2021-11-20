@@ -7,10 +7,11 @@ import {faShoppingCart} from "@fortawesome/free-solid-svg-icons";
 import {faMoon as farMoon} from "@fortawesome/free-regular-svg-icons";
 import {faSun as farSun} from "@fortawesome/free-regular-svg-icons";
 import Button from "../Button/Button";
+import { useSelector } from "react-redux";
 
 const Header = ({ mode, toggleMode }) => {
+    const totalPrice = useSelector(({ cart }) => cart.totalPrice);
     let totalCount = 2;
-    let totalSum = 250;
 
     return (
         <div className={style.header}>
@@ -25,7 +26,7 @@ const Header = ({ mode, toggleMode }) => {
                         <FontAwesomeIcon icon={ mode ? farMoon : farSun } />
                     </Button>
                     <NavLink to='/cart' type='button' className={ style.btnCart }>
-                        <span className={ style.sum }>{ totalSum } &#8372;</span>
+                        <span className={ style.sum }>{ totalPrice } &#8372;</span>
                         <span className={ style.cart }><FontAwesomeIcon icon={faShoppingCart} />{ totalCount }</span>
                     </NavLink>
                 </div>
