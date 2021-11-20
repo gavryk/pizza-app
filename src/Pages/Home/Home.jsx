@@ -31,9 +31,9 @@ const Home = () => {
         dispatch(setSortBy(type))
     }, [dispatch]);
 
-    const addToCart = useCallback((obj) => {
+    const addToCart = (obj) => {
         dispatch(addPizzaToCart(obj));
-    }, [dispatch])
+    }
 
     return (
         <div className={style.homeContent}>
@@ -57,7 +57,7 @@ const Home = () => {
                         ? items.map((item) => {
                             return(
                                 <Pizza
-                                    addToCart={ (obj) => console.log(obj) }
+                                    addToCart={ addToCart }
                                     key={item.id}
                                     { ...item }
                                 />
