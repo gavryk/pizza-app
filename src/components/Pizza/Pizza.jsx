@@ -5,9 +5,9 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import PropTypes from 'prop-types';
 
-const Pizza = ({ imageUrl, name, price, types, sizes}) => {
+const Pizza = ({ id, imageUrl, name, price, types, sizes, addToCart}) => {
     const [activeType, setActiveType] = useState(types[0]);
-    const [activeSize, setActiveSize] = useState(sizes[0]);
+    const [activeSize, setActiveSize] = useState(0);
 
     const availableTypes = ['thin', 'traditional'];
     const availableSizes = [26, 30, 40];
@@ -17,6 +17,18 @@ const Pizza = ({ imageUrl, name, price, types, sizes}) => {
     }
     const onSelectSize = (ind) => {
         setActiveSize(ind);
+    }
+
+    const addPizza = () => {
+        const obj = {
+            id,
+            name,
+            imageUrl,
+            price,
+            size: availableSizes[activeSize],
+            type: availableTypes[activeType]
+        }
+        addToCart(obj);
     }
 
     return (
@@ -52,7 +64,7 @@ const Pizza = ({ imageUrl, name, price, types, sizes}) => {
                     <span>From { price } &#8372;</span>
                 </div>
                 <div className={ style.addButton }>
-                    <Button border >
+                    <Button border onClick={addPizza}>
                         <FontAwesomeIcon icon={faPlus} />
                         Add
                     </Button>
@@ -67,7 +79,8 @@ Pizza.propTypes = {
     imageUrl: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     types: PropTypes.arrayOf(PropTypes.number).isRequired,
-    sizes: PropTypes.arrayOf(PropTypes.number).isRequired
+    sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
+    addToCart: PropTypes.func
 }
 
 Pizza.defaultProps = {

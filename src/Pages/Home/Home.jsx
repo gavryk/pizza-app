@@ -3,7 +3,8 @@ import style from './Home.module.scss';
 import { Categories, Sort, Pizza, PizzaLoader } from "../../components";
 import {useDispatch, useSelector} from "react-redux";
 import {setCategory, setSortBy} from "../../redux/actions/filters";
-import { fetchPizzas } from '../../redux/actions/pizzas'
+import { fetchPizzas } from '../../redux/actions/pizzas';
+import { addPizzaToCart } from "../../redux/actions/cart";
 
 const catList = ['Meat', 'Vegetarian', 'Grill', 'Sharp', 'Closed'];
 const sortList = [
@@ -30,6 +31,10 @@ const Home = () => {
         dispatch(setSortBy(type))
     }, [dispatch]);
 
+    const addToCart = useCallback((obj) => {
+        dispatch(addPizzaToCart(obj));
+    }, [dispatch])
+
     return (
         <div className={style.homeContent}>
             <div className={`${ style.content__top } d-flex justify-content-between`}>
@@ -52,6 +57,7 @@ const Home = () => {
                         ? items.map((item) => {
                             return(
                                 <Pizza
+                                    addToCart={ (obj) => console.log(obj) }
                                     key={item.id}
                                     { ...item }
                                 />

@@ -10,8 +10,7 @@ import Button from "../Button/Button";
 import { useSelector } from "react-redux";
 
 const Header = ({ mode, toggleMode }) => {
-    const totalPrice = useSelector(({ cart }) => cart.totalPrice);
-    let totalCount = 2;
+    const { totalPrice, totalCount } = useSelector(({ cart }) => cart);
 
     return (
         <div className={style.header}>
