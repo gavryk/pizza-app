@@ -18,8 +18,9 @@ const Sort = React.memo(({ sortList, sortBy, onClickSortBy }) => {
         setVisibleSort(false);
     }
 
-    const clickOffSortPopup = (e) => {
-        if (!e.path.includes(sortRef.current)) {
+    const clickOffSortPopup = (event) => {
+        let path = event.path || (event.composedPath && event.composedPath());
+        if (!path.includes(sortRef.current)) {
             setVisibleSort(false);
         }
     }
@@ -45,7 +46,7 @@ const Sort = React.memo(({ sortList, sortBy, onClickSortBy }) => {
                     return(
                         <li key={`${el.type}_${index}`}
                             onClick={ () => selectSort(el) }
-                            className={`dropdown-item ${ sortBy === el && style.active }`}>
+                            className={`dropdown-item ${ sortBy === el.type && style.active }`}>
                             { el.name }
                         </li>
                     )
