@@ -29,9 +29,10 @@ const Cart = () => {
             <div className={ style.cartWrapper }>
                 {
                     cartPizzas &&
-                    cartPizzas.map(item => {
+                    cartPizzas.map((item, index) => {
                         return (
                             <PizzaCart
+                                key={`${item.id}_${index}`}
                                 imgUrl={ item.imageUrl }
                                 name={ item.name }
                                 type={ item.type }
