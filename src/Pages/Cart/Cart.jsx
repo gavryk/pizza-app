@@ -9,6 +9,10 @@ import { PizzaCart } from "../../components";
 const Cart = () => {
     const { items, totalPrice, totalCount } = useSelector(({ cart }) => cart);
 
+    const cartPizzas = Object.keys(items).map((key) => {
+        return items[key][0];
+    });
+
     return (
         <div className={ style.cartPageContainer }>
             <div className={`${ style.cartPageContainer__top } d-flex align-items-center justify-content-between`}>
@@ -23,19 +27,26 @@ const Cart = () => {
             </div>
 
             <div className={ style.cartWrapper }>
-                <PizzaCart
-                    imgUrl='https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/6652fec1-04df-49d8-8744-232f1032c44b.jpg'
-                    name='Pizza Test'
-                    type='thin'
-                    size={ 26 }
-                    price={ 850 }
-                />
+                {
+                    cartPizzas &&
+                    cartPizzas.map(item => {
+                        return (
+                            <PizzaCart
+                                imgUrl={ item.imageUrl }
+                                name={ item.name }
+                                type={ item.type }
+                                size={ item.size }
+                                price={ item.price }
+                            />
+                        )
+                    }) 
+                }
             </div>
 
             <div className={ style.cartPageContainer__total }>
                 <div className={ style.cartTotalCount }>
                     <span>Total Pizzas: </span>
-                    <span class={ style.count }> { totalCount } pcs</span>
+                    <span className={ style.count }> { totalCount } pcs</span>
                 </div>
                 <div className={ style.cartTotalPrice }>
                     <span>Order amount: </span>
