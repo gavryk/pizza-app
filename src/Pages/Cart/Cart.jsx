@@ -103,9 +103,9 @@ const Cart = () => {
                             <img src={cartEmptyImage} alt="Empty cart" />
                         </div>
                         <div className={ style.emptyCart__btn }>
-                            <Button border active>
-                                <NavLink to="/" className="button button--black">
-                                    Вернуться назад
+                            <Button active>
+                                <NavLink to="/">
+                                    Come Back
                                 </NavLink>
                             </Button>
                         </div>
