@@ -1,3 +1,5 @@
+@import "src/vars";
+
 .cartPageContainer {
     width: 1200px;
     max-width: 96%;
@@ -24,6 +26,28 @@
             }
             span {
                 font-size: 16px;
+            }
+        }
+    }
+
+    &__total {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        justify-content: space-between;
+        align-items: center;
+        column-gap: 15px;
+        padding: 40px 0;
+        .cartTotalCount,
+        .cartTotalPrice {
+            span {
+                font-size: 22px;
+                &.count {
+                    font-weight: 700;
+                }
+                &.price {
+                    font-weight: 700;
+                    color: $b_color;
+                }
             }
         }
     }
