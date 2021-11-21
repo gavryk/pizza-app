@@ -5,10 +5,22 @@ import {faTimesCircle as farTimesCircle} from "@fortawesome/free-regular-svg-ico
 import {faPlusCircle} from "@fortawesome/free-solid-svg-icons";
 import {faMinusCircle} from "@fortawesome/free-solid-svg-icons";
 
-const PizzaCart = ({ id, name, type, size, imgUrl, totalPricePizzas, totalCountPizzas, removeItem }) => {
+const PizzaCart = ({ 
+    id, name, type, size, imgUrl, 
+    totalPricePizzas, totalCountPizzas, removeItem,
+    onMinus, onPlus 
+}) => {
     
     const handleRemoveClick = () => {
         removeItem(id);
+    }
+    
+    const handlePlus = () => {
+        onPlus(id);
+    } 
+
+    const handleMinus = () => {
+        onMinus(id);
     } 
 
     return (
@@ -21,11 +33,11 @@ const PizzaCart = ({ id, name, type, size, imgUrl, totalPricePizzas, totalCountP
                 <p>{ type }, { size } sm</p>
             </div>
             <div className={ style.cartItem__count }>
-                <button className="btn-minus">
+                <button onClick={ handleMinus } className="btn-minus">
                     <FontAwesomeIcon icon={faMinusCircle} />
                 </button>
                 <span>{ totalCountPizzas }</span>
-                <button className='btn-plus'>
+                <button onClick={ handlePlus } className='btn-plus'>
                     <FontAwesomeIcon icon={faPlusCircle} /> 
                 </button>
             </div>

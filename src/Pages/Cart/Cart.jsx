@@ -5,7 +5,7 @@ import style from './Cart.module.scss';
 import { useSelector } from "react-redux";
 import { PizzaCart } from "../../components";
 import { useDispatch } from "react-redux";
-import { clearCart, removeCartItem } from "../../redux/actions/cart";
+import { clearCart, removeCartItem, plusCartItem, minusCartItem } from "../../redux/actions/cart";
 import { Button } from "../../components";
 import cartEmptyImage from '../../assets/img/empty-cart.png';
 import { NavLink } from "react-router-dom";
@@ -28,6 +28,14 @@ const Cart = () => {
         if (window.confirm('Are you sure you want to delete pizza?')) {
             dispatch(removeCartItem(id));
         }
+    }
+
+    const onPlusItem = (id) => {
+        dispatch(plusCartItem(id))
+    }
+
+    const onMinusItem = (id) => {
+        dispatch(minusCartItem(id))
     }
 
     return (
@@ -63,6 +71,8 @@ const Cart = () => {
                                         totalPricePizzas={ items[item.id].totalPrice }
                                         totalCountPizzas={ items[item.id].items.length }
                                         removeItem={ removeItem }
+                                        onPlus={ onPlusItem }
+                                        onMinus={ onMinusItem }
                                     />
                                 )
                             }) 
