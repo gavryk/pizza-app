@@ -51,4 +51,45 @@
             }
         }
     }
+
+    &__bottom {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-gap: 15px;
+        justify-content: space-between;
+        button {
+            padding: 0;
+            @media screen and (max-width: 576px) {
+                min-width: auto;
+            }
+            a {
+                display: block;
+                min-width: 200px;
+                padding: 15px 20px;
+                text-decoration: none;
+                color: $b_color;
+            }
+        }
+    }
+}
+
+.emptyCart {
+    padding: 50px 0;
+    text-align: center;
+    &__title,
+    &__image {
+        margin-bottom: 30px;
+    }
+    &__btn {
+        button {
+            padding: 0;
+            a {
+                display: block;
+                min-width: 200px;
+                padding: 15px 20px;
+                text-decoration: none;
+                color: $b_color;
+            }
+        }
+    }
 }

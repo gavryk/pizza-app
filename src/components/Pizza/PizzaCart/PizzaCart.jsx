@@ -5,7 +5,7 @@ import {faTimesCircle as farTimesCircle} from "@fortawesome/free-regular-svg-ico
 import {faPlusCircle} from "@fortawesome/free-solid-svg-icons";
 import {faMinusCircle} from "@fortawesome/free-solid-svg-icons";
 
-const PizzaCart = ({ name, type, size, imgUrl, totalPricePizzas, totalCountPizzas }) => {
+const PizzaCart = ({ name, type, size, imgUrl, totalPricePizzas, totalCountPizzas, onClearCart }) => {
     return (
         <div className={ style.cartItem }>
             <div className={ style.cartItem__image }>

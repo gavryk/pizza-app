@@ -33,6 +33,13 @@ const cart = (state = initState, action) => {
             };
 
         }
+        case 'CLEAR_CART':
+            return {
+                ...state,
+                items: {},
+                totalPrice: 0,
+                totalCount: 0,
+            }
         case 'SET_TOTAL_PRICE':
             return {
                 ...state,

@@ -18,3 +18,9 @@ export const setTotalCount = (payload) => {
         payload: payload
     }
 }
+
+export const clearCart = () => {
+    return {
+        type: 'CLEAR_CART'
+    }
+}
