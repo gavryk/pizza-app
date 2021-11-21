@@ -5,22 +5,15 @@ export const addPizzaToCart = (pizzaObj) => {
     }
 }
 
-export const setTotalPrice = (payload) => {
-    return {
-        type: 'SET_TOTAL_PRICE',
-        payload: payload
-    }
-}
-
-export const setTotalCount = (payload) => {
-    return {
-        type: 'SET_TOTAL_PRICE',
-        payload: payload
-    }
-}
-
 export const clearCart = () => {
     return {
         type: 'CLEAR_CART'
+    }
+}
+
+export const removeCartItem = (id) => {
+    return {
+        type: 'REMOVE_CART_ITEM',
+        payload: id
     }
 }

@@ -5,7 +5,7 @@ import style from './Cart.module.scss';
 import { useSelector } from "react-redux";
 import { PizzaCart } from "../../components";
 import { useDispatch } from "react-redux";
-import { clearCart } from "../../redux/actions/cart";
+import { clearCart, removeCartItem } from "../../redux/actions/cart";
 import { Button } from "../../components";
 import cartEmptyImage from '../../assets/img/empty-cart.png';
 import { NavLink } from "react-router-dom";
@@ -21,6 +21,12 @@ const Cart = () => {
     const onClearCart = () => {
         if (window.confirm('Are you sure you want to empty the cart?')) {
             dispatch(clearCart());
+        }
+    }
+
+    const removeItem = (id) => {
+        if (window.confirm('Are you sure you want to delete pizza?')) {
+            dispatch(removeCartItem(id));
         }
     }
 
@@ -47,6 +53,7 @@ const Cart = () => {
                             cartPizzas.map((item, index) => {
                                 return (
                                     <PizzaCart
+                                        id={ item.id }
                                         key={`${item.id}_${index}`}
                                         imgUrl={ item.imageUrl }
                                         name={ item.name }
@@ -55,6 +62,7 @@ const Cart = () => {
                                         price={ item.price }
                                         totalPricePizzas={ items[item.id].totalPrice }
                                         totalCountPizzas={ items[item.id].items.length }
+                                        removeItem={ removeItem }
                                     />
                                 )
                             }) 

@@ -40,16 +40,20 @@ const cart = (state = initState, action) => {
                 totalPrice: 0,
                 totalCount: 0,
             }
-        case 'SET_TOTAL_PRICE':
+        case 'REMOVE_CART_ITEM':
+            const newItems = {
+                ...state.items
+            }
+            const curentTotalPrice = newItems[action.payload].totalPrice;
+            const curentTotalCount = newItems[action.payload].items.length;
+            delete newItems[action.payload];
+
             return {
                 ...state,
-                totalPrice: action.payload
-            };
-        case 'SET_TOTAL_COUNT':
-            return {
-                ...state,
-                totalCount: action.payload
-            };
+                items: newItems,
+                totalPrice: state.totalPrice - curentTotalPrice,
+                totalCount: state.totalCount - curentTotalCount,
+            }    
         default:
             return state;
     }
