@@ -10,8 +10,10 @@ const Cart = () => {
     const { items, totalPrice, totalCount } = useSelector(({ cart }) => cart);
 
     const cartPizzas = Object.keys(items).map((key) => {
-        return items[key][0];
+        return items[key].items[0];
     });
+
+
 
     return (
         <div className={ style.cartPageContainer }>
@@ -38,6 +40,7 @@ const Cart = () => {
                                 type={ item.type }
                                 size={ item.size }
                                 price={ item.price }
+                                totalPricePizzas={ items[item.id].totalPrice }
                             />
                         )
                     }) 

@@ -60,7 +60,7 @@ const Home = () => {
                                 <Pizza
                                     addToCart={ addToCart }
                                     key={item.id}
-                                    inCartCount={ cartItems[item.id] && cartItems[item.id].length }
+                                    inCartCount={ cartItems[item.id] && cartItems[item.id].items.length }
                                     { ...item }
                                 />
                             )
