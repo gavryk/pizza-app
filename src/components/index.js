@@ -4,3 +4,4 @@ export { default as Button } from './Button/Button';
 export { default as Sort } from './Sort/Sort';
 export { default as Pizza } from './Pizza/Pizza';
 export { default as PizzaLoader } from './Pizza/PizzaLoader';
+export { default as PizzaCart } from './Pizza/PizzaCart/PizzaCart';
