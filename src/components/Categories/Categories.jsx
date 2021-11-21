@@ -6,7 +6,7 @@ import style from './Categories.module.scss'
 const Categories = React.memo(({ activeCategory, catList, onClickCategory }) => {
     
     return(
-        <ul className='d-flex justify-content-start align-items-center'>
+        <ul>
             <li className={`${ style.btn } ${ activeCategory === null && style.active }`}
                 onClick={ () => onClickCategory(null) }
             >

@@ -38,15 +38,15 @@ const Home = () => {
 
     return (
         <div className={style.homeContent}>
-            <div className={`${ style.content__top } d-flex justify-content-between`}>
-                <div className='col-8'>
+            <div className={`${ style.content__top } d-flex justify-content-between flex-wrap`}>
+                <div className='col-lg-8 col-sm-12 col-xs-12'>
                     <Categories
                         activeCategory={category}
                         onClickCategory={ onSelectCat }
                         catList={ catList }
                     />
                 </div>
-                <div className="col-3 d-flex align-items-center justify-content-center">
+                <div className="col-lg-3 col-sm-12 d-flex align-items-center justify-content-center">
                     <Sort onClickSortBy={ onClickSortBy } sortBy={ sortBy.type } sortList={ sortList } />
                 </div>
             </div>

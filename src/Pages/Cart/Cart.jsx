@@ -41,6 +41,7 @@ const Cart = () => {
                                 size={ item.size }
                                 price={ item.price }
                                 totalPricePizzas={ items[item.id].totalPrice }
+                                totalCountPizzas={ items[item.id].items.length }
                             />
                         )
                     }) 

@@ -2,12 +2,18 @@
   .headerWrapper {
     padding: 30px 15px;
     border-bottom: 1px solid #F7F7F7;
+    flex-wrap: wrap;
+    @media screen and (max-width: 576px) {
+      justify-content: center !important;
+  }
     .logo {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       color: #000;
       text-decoration: none;
       transition: all .4s ease-in-out;
+      flex-basis: 200px;
+      max-width: 200px;
       &:hover {
         opacity: .8;
       }
@@ -20,9 +26,16 @@
         flex: 1;
         font-weight: 700;
         margin-bottom: 0;
+        display: inline-block;
       }
     }
     .headerButton {
+      @media screen and (max-width: 576px) {
+        flex-basis: 100%;
+        max-width: 100%;
+        justify-content: center !important;
+        margin: 10px 0;
+      }
       .btnCart {
         background: #FE5F1E;
         border-radius: 30px;
