@@ -1,5 +1,6 @@
 import axios from "axios";
 
+//"server": "npx json-server --watch db.json --port=3001"
 export const fetchPizzas = (category, sortBy) => {
     let catQuery = category !== null ? `category=${category}&` : '';
     return dispatch => {
