@@ -59,10 +59,11 @@
         justify-content: space-between;
         button {
             padding: 0;
+            overflow: hidden;
             @media screen and (max-width: 576px) {
                 min-width: auto;
             }
-            a {
+            a, span {
                 display: block;
                 min-width: 200px;
                 padding: 15px 20px;

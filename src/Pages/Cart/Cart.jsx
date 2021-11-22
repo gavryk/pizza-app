@@ -38,6 +38,10 @@ const Cart = () => {
         dispatch(minusCartItem(id))
     }
 
+    const onClickToOrder = () => {
+        console.log('Your Order: ', items);
+    }
+
     return (
         <>
             {
@@ -97,10 +101,8 @@ const Cart = () => {
                                 Come Back
                             </NavLink>
                         </Button>
-                        <Button border active>
-                            <NavLink to='#'>
-                                Pay Now
-                            </NavLink>
+                        <Button border active onClick={ onClickToOrder }>
+                            <span>Pay Now</span>
                         </Button>
                     </div>
                 </div> 
